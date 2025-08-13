@@ -1,4 +1,3 @@
-// components/PlayArea.jsx
 import React from "react";
 
 const PlayArea = ({
@@ -52,7 +51,7 @@ const PlayArea = ({
               >
                 {point.number}
               </div>
-              {/* Timer Display - Only for current target */}
+
               {isCurrentTarget && (
                 <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
                   <div

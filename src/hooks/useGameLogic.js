@@ -97,16 +97,15 @@ export const useGameLogic = () => {
     }
   };
 
-  // Restart game with same points count, keeping timer running
   const restartGame = () => {
-    if (!pointsCount) return; // Do nothing if no game has been started
+    if (!pointsCount) return;
     setPoints([]);
     setCurrentPointTimer(3.0);
     setCurrentTarget(1);
     setGameOver(false);
     setAllCleared(false);
     setAutoPlay(false);
-    initializeGame(pointsCount); // Reinitialize with same points count
+    initializeGame(pointsCount);
   };
 
   // Start new game
