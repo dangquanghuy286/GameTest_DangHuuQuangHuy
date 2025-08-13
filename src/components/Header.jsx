@@ -9,6 +9,7 @@ const Header = ({
   restartGame,
   autoPlay,
   setAutoPlay,
+  gameOver,
 }) => {
   return (
     <div className="mb-6">
@@ -36,27 +37,32 @@ const Header = ({
       </div>
 
       <div className="flex gap-2">
+        {/* Nút Play */}
         <button
           onClick={startNewGame}
-          disabled={isPlaying}
+          disabled={isPlaying || gameOver} // Vô hiệu hóa khi gameOver
           className={`bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400 text-sm ${
-            isPlaying ? "hidden" : ""
+            isPlaying || gameOver ? "hidden" : ""
           }`}
         >
           Play
         </button>
+
+        {/* Nút Restart */}
         <button
           onClick={restartGame}
           className={`bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 text-sm ${
-            !isPlaying ? "hidden" : ""
+            !isPlaying && !gameOver ? "hidden" : ""
           }`}
         >
           Restart
         </button>
+
+        {/* Nút Auto Play */}
         <button
           onClick={() => setAutoPlay(!autoPlay)}
           className={`bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 text-sm ${
-            !isPlaying ? "hidden" : ""
+            !isPlaying || gameOver ? "hidden" : ""
           }`}
         >
           Auto Play {autoPlay ? "ON" : "OFF"}
