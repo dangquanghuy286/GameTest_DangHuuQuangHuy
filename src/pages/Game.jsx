@@ -5,6 +5,7 @@ import Status from "../components/Status.jsx";
 import PlayArea from "../components/PlayArea.jsx";
 
 import { useGameLogic } from "../hooks/useGameLogic.js";
+import Footer from "../components/Footer.jsx";
 
 const ClearThePointsGame = () => {
   const gameState = useGameLogic();
@@ -43,6 +44,8 @@ const ClearThePointsGame = () => {
           currentPointTimer={gameState.currentPointTimer}
           handlePointClick={gameState.handlePointClick}
         />
+
+        <Footer currentTarget={gameState.currentTarget} />
       </div>
     </div>
   );

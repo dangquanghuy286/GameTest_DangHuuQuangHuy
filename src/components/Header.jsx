@@ -43,17 +43,21 @@ const Header = ({
             isPlaying ? "hidden" : ""
           }`}
         >
-          Start
+          Play
         </button>
         <button
           onClick={restartGame}
-          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 text-sm"
+          className={`bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 text-sm ${
+            !isPlaying ? "hidden" : ""
+          }`}
         >
           Restart
         </button>
         <button
           onClick={() => setAutoPlay(!autoPlay)}
-          className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 text-sm"
+          className={`bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 text-sm ${
+            !isPlaying ? "hidden" : ""
+          }`}
         >
           Auto Play {autoPlay ? "ON" : "OFF"}
         </button>

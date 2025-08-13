@@ -34,12 +34,6 @@ const Status = ({
       {/* Playing Status */}
       {isPlaying && !gameOver && !allCleared && (
         <div className="text-center mb-4">
-          <p className="text-sm text-gray-600">
-            Click number:{" "}
-            <span className="font-bold text-lg text-blue-600">
-              {currentTarget}
-            </span>
-          </p>
           <p className="text-xs text-gray-500">
             Points remaining: {visiblePointsCount}
           </p>
