@@ -19,7 +19,7 @@ const ClearThePointsGame = () => {
           time={gameState.time}
           isPlaying={gameState.isPlaying}
           startNewGame={gameState.startNewGame}
-          resetGame={gameState.resetGame}
+          restartGame={gameState.restartGame}
           autoPlay={gameState.autoPlay}
           setAutoPlay={gameState.setAutoPlay}
         />

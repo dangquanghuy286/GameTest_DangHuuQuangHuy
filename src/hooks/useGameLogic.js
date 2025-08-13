@@ -29,7 +29,6 @@ export const useGameLogic = () => {
     setPoints(newPoints);
     setCurrentTarget(1);
     setCurrentPointTimer(3.0);
-    setTime(0);
     setIsPlaying(true);
     setGameOver(false);
     setAllCleared(false);
@@ -71,9 +70,6 @@ export const useGameLogic = () => {
       }, 100);
       setTimerInterval(interval);
       return () => clearInterval(interval);
-    } else if (timerInterval) {
-      clearInterval(timerInterval);
-      setTimerInterval(null);
     }
   }, [isPlaying, gameOver, allCleared]);
 
@@ -101,20 +97,16 @@ export const useGameLogic = () => {
     }
   };
 
-  // Reset game
-  const resetGame = () => {
-    if (timerInterval) {
-      clearInterval(timerInterval);
-      setTimerInterval(null);
-    }
+  // Restart game with same points count, keeping timer running
+  const restartGame = () => {
+    if (!pointsCount) return; // Do nothing if no game has been started
     setPoints([]);
-    setCurrentPointTimer(0);
+    setCurrentPointTimer(3.0);
     setCurrentTarget(1);
-    setTime(0);
-    setIsPlaying(false);
     setGameOver(false);
     setAllCleared(false);
-    setAutoPlay(false); // Reset auto play when resetting
+    setAutoPlay(false);
+    initializeGame(pointsCount); // Reinitialize with same points count
   };
 
   // Start new game
@@ -125,7 +117,11 @@ export const useGameLogic = () => {
       return;
     }
     setPointsCount(count);
-    resetGame();
+    setTime(0); // Reset time for new game
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      setTimerInterval(null);
+    }
     initializeGame(count);
   };
 
@@ -144,7 +140,7 @@ export const useGameLogic = () => {
     currentPointTimer,
     visiblePointsCount,
     handlePointClick,
-    resetGame,
+    restartGame,
     startNewGame,
     autoPlay,
     setAutoPlay,
